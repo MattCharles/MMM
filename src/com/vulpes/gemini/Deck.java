@@ -10,18 +10,18 @@ import java.util.Stack;
 public class Deck {
     private Stack<Card> cards;
 
-    private Card militiaman = new Unit("militiaman", 0, 2, 1, 1);
-    private Card shopkeeper = new Unit("shopkeeper", 0, 1, 2, 1);
-    private Card scribe = new Unit("scribe", 0, 1, 1, 2);
+    //private Card militiaman = new Unit("militiaman", 0, 2, 1, 1);
+    //private Card shopkeeper = new Unit("shopkeeper", 0, 1, 2, 1);
+    //private Card scribe = new Unit("scribe", 0, 1, 1, 2);
 
     // Initialize a default deck.
     public Deck(){
         cards = new Stack<>();
         int numBasics = 3;
         for(int i=0; i<numBasics; i++){
-            cards.push(militiaman);
-            cards.push(shopkeeper);
-            cards.push(scribe);
+            cards.push(Game.militiaman);
+            cards.push(Game.shopkeeper);
+            cards.push(Game.scribe);
         }
     }
 

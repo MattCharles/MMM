@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public interface optionSelector {
-        public void execute();
+        void execute();
     }
 
     //Options text
@@ -25,6 +25,8 @@ public class Main {
         while(true) {
             System.out.println("Welcome to MMM Helper!");
             displayMenu();
+            //TODO: allow users to play again after completing a game
+            //TODO: options menu to set num players, etc.
             parseInput();
         }
     }
@@ -52,8 +54,6 @@ public class Main {
     }
 
     public static void newGame(){
-        System.out.println("TBD");
-        //ask how many players
         Game game = new Game();
         game.play();
         System.exit(0);

@@ -33,6 +33,10 @@ public class Player {
         }
     }
 
+    public void addPeasant(){
+        hand.add(new Unit("Peasant", 0));
+    }
+
     public String getName(){
         return this.name;
     }
