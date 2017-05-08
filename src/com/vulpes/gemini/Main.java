@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    public interface optionSelector {
-        void execute();
-    }
-
     //Options text
     private static String[] optionsList = new String[]{
             "New Game",

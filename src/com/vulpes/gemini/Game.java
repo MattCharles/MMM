@@ -119,6 +119,9 @@ public class Game {
         thisGuy.draw(DEFAULT_HAND_SIZE);
         thisGuy.addPeasant();
 
+        System.out.println("Your Hand:");
+        thisGuy.printHand();
+
         //Action phase.
         for(Player dude: players){
             System.out.println(dude.getName());

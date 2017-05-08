@@ -1,6 +1,8 @@
 package com.vulpes.gemini;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 /**
@@ -13,10 +15,23 @@ public class Player {
     private String name;
     private int influence;
 
+    private static String[] optionsList = new String[]{
+            "Show hand",
+            "Play a card"
+    };
+
+    private optionSelector[] functionsList = new optionSelector[]{
+            () -> printHand(),
+            () -> cardSelect()
+    };
+
     public Player() {
         this.deck = new Deck();
         this.influence = 0;
+        this.hand = new ArrayList<>();
+        this.discard = new ArrayList<>();
     }
+
 
     public void draw(){
         if(deck.hasMore()){
@@ -24,6 +39,7 @@ public class Player {
         } else {
             deck.addCards(discard);
             discard.clear();
+            hand.add(deck.draw());
         }
     }
 
@@ -62,10 +78,44 @@ public class Player {
     }
 
     public void printHand(){
-        System.out.println(hand.stream().map(Object::toString).collect(Collectors.joining(", ")));
+        for(Card card : this.hand){
+            System.out.print(card.getName() + " ");
+        }
     }
 
     public void startingDraw(){
 
+    }
+
+    public void showOptions(){
+        System.out.println("");
+    }
+
+    //these two are the same as Main.cardSelect() - possible to reuse code?
+    public void cardSelect(){
+        //Set up options map
+        int numOptions = 0;
+        while (numOptions < optionsList.length) {
+            System.out.println((numOptions + 1) + ") " + optionsList[numOptions]);
+            numOptions++;
+        }
+        System.out.println("Select an option...");
+    }
+
+    public void parseInput(){
+        //Get user input
+        Scanner reader = new Scanner(System.in);
+        int selectedOption = reader.nextInt();
+        if(selectedOption > optionsList.length || selectedOption < 1) {
+            System.out.println("Invalid option selected.");
+            exitMenu();
+        } else {
+            functionsList[selectedOption-1].execute();
+        }
+    }
+
+    public static void exitMenu(){
+        System.out.println("Bye bye!");
+        System.exit(0);
     }
 }
