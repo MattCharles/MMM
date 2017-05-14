@@ -1,0 +1,5 @@
+# The .idea/ directory is just for the IDE to use, we shouldn't track this.
+.idea/*
+
+# Tracking binary files is major dumb dumb.
+*.class
